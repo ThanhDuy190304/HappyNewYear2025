@@ -28,7 +28,7 @@ let getTextPoints = function (text, fontSize, canvasWidth, canvasHeight) {
     offCtx.font = `${fontSize}px Dancing Script`;
     offCtx.textAlign = 'center';
     offCtx.textBaseline = 'middle';
-    offCtx.fillText(text, canvasWidth / 2, canvasHeight / 2);
+    offCtx.fillText(text, canvasWidth / 2, canvasHeight / 1.5);
 
     let imageData = offCtx.getImageData(0, 0, canvasWidth, canvasHeight);
     let points = [];
@@ -44,7 +44,7 @@ let getTextPoints = function (text, fontSize, canvasWidth, canvasHeight) {
 };
 
 // Adjust font size for mobile
-let fontSize = 100;
+let fontSize = mobile ? 60 : 100;
 let pointsOrigin = getTextPoints(text, fontSize, width, height);
 let targetPoints = [];
 let isCompleted = false;
@@ -56,8 +56,11 @@ let pulse = function () {
 };
 
 window.addEventListener('resize', function () {
-    width = canvas.width = koef * innerWidth;
-    height = canvas.height = koef * innerHeight;
+    let width = canvas.width = koef * window.innerWidth;
+    let height = canvas.height = koef * window.innerHeight;
+    if (mobile) {
+        height = Math.min(height, 0.8 * window.innerHeight); // Giới hạn chiều cao canvas trên thiết bị di động
+    }
     ctx.fillStyle = "rgba(0,0,0,1)";
     ctx.fillRect(0, 0, width, height);
     pointsOrigin = getTextPoints(text, fontSize, width, height);
