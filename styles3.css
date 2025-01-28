@@ -1,0 +1,19 @@
+/* Cài đặt cho html và body để chúng chiếm toàn bộ màn hình mà không có thanh cuộn */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Ẩn thanh cuộn */
+}
+
+/* Cài đặt cho canvas để chiếm toàn bộ màn hình */
+canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .2);
+}
