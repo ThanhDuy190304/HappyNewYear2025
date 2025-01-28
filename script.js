@@ -44,7 +44,7 @@ let getTextPoints = function (text, fontSize, canvasWidth, canvasHeight) {
 };
 
 // Adjust font size for mobile
-let fontSize = mobile ? 50 : 100;
+let fontSize = 100;
 let pointsOrigin = getTextPoints(text, fontSize, width, height);
 let targetPoints = [];
 let isCompleted = false;
